@@ -20,8 +20,8 @@ function reset() {
   saveEl.textContent = "Previous Entries: ";
 }
 
-function save() {
-  if (!containsPlusMinusSymbol() && (getCountElValue() > 0 || getCountElValue() !== '')) {
+function save() {   
+  if (!containsPlusMinusSymbol() && (countEl.value > 0 || countEl.value !== '')) {
     count = getCountElValue();
     let countStr = count + " - ";
 
