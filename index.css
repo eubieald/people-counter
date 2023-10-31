@@ -80,3 +80,12 @@ input#count-el {
 input#count-el::placeholder {
   color: white;
 }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* This is important for Firefox */
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* This is important for Firefox */
+}

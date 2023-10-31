@@ -1,19 +1,16 @@
-//document.getElementById("count-el").innerText = 5;
-
 let count = 0,
 countEl = document.getElementById("count-el"),
 saveEl = document.getElementById("saved-el");
 
 function increment() {
-  count += 1;
+  count  = getCountElValue() + 1;
   countEl.value = count;
-
 }
 
 function decrement() {
-  if (count >= 1) {
-   count -= 1;
-   countEl.value = count; 
+  if (count > 0 || getCountElValue() > 0) {
+    count  = getCountElValue() - 1;
+    countEl.value = count;  
   }
 }
 
@@ -24,19 +21,31 @@ function reset() {
 }
 
 function save() {
-  if (countEl.value !==0 && countEl.value !== undefined) {
-    count = countEl.value;
+  if (!containsPlusMinusSymbol() && (getCountElValue() > 0 || getCountElValue() !== '')) {
+    count = getCountElValue();
+    let countStr = count + " - ";
+
+    saveEl = document.getElementById("saved-el");
+  
+    // use textConent instead of innerText to include spaces.
+    saveEl.textContent += countStr;
+  
+    // reset count
+    count = 0;
+    countEl.value = count;
+    }
+}
+
+function getCountElValue() {
+  return Number(countEl.value);
+}
+
+function containsPlusMinusSymbol() {
+  let value = countEl.value;
+  if (value.includes('-') || value.includes('+')) {
+    // If the value contains a hyphen or plus sign, remove them
+    return true;
   }
-
-  let countStr = count + " - ";
-  saveEl = document.getElementById("saved-el");
-
-  // use textConent instead of innerText to include spaces.
-  saveEl.textContent += countStr;
-
-  // reset count
-  count = 0;
-  countEl.value = count;
 }
 
 /// THE DOM (Document Object Model) - How you use javascript to modify a website; 
