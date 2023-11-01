@@ -29,6 +29,8 @@ function save() {
   
     // use textConent instead of innerText to include spaces.
     saveEl.textContent += countStr;
+
+    console.log('Entry Saved');
   
     // reset count
     count = 0;
